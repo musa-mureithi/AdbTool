@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: phone-debug
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python Backend/manage.py collectstatic --noinput
+    startCommand: gunicorn phoneTool.wsgi:application
+    staticPublishPath: staticfiles
